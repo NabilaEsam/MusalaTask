@@ -20,14 +20,37 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "userInterfaceStyle":"automatic"
+      "userInterfaceStyle": "automatic",
+      "bundleIdentifier": "app.musala.com",
+      "buildNumber": "0.0.1",
+      "associatedDomains": [
+        "applinks:app.musala.com"
+      ]
     },
     "android": {
-      "userInterfaceStyle":"automatic",
+      "userInterfaceStyle": "automatic",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "app.musala.com",
+      "versionCode": 1,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "app.musala.com"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

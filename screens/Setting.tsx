@@ -3,7 +3,6 @@ import { Dimensions, I18nManager, Pressable, StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
-// import { Restart } from "fiction-expo-restart";
 import * as Updates from "expo-updates";
 import I18n from "i18next";
 import AppContext from "../Context/AppContext";
@@ -11,7 +10,7 @@ import TextFieldComponent from "../components/TextField";
 export default function SettingScreen() {
   const [selected, setSelected] = useState("en");
   const [selectMode, setSelectMode] = useState("light");
-  const { themeMode, setThemeMode } = useContext(AppContext);
+  const { themeMode, setThemeMode} = useContext(AppContext);
   const changeLang = async (lang: any) => {
     setSelected(lang);
     I18n.changeLanguage(lang);
@@ -21,7 +20,7 @@ export default function SettingScreen() {
     } else if (lang === "en") {
       await I18nManager.forceRTL(false);
     }
-    Updates.reloadAsync();
+    // Updates.reloadAsync();
   };
 
   const changeMode = (mode: any) => {
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "transparent",
-    direction:(I18n.language === 'ar') ? 'rtl' : 'ltr'
+    direction: I18n.language === "ar" ? "rtl" : "ltr",
   },
   txt1: {
     fontSize: 14,

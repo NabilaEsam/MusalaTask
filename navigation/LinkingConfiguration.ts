@@ -25,13 +25,12 @@ const linking: LinkingOptions<RootStackParamList> = {
               Setting: 'Setting',
             },
           }
-
+         
         },
       },
       Details: {
-        path: 'Details/:url',
-        parse: {
-          url: (url) => `${url}`,
+        screens: {
+          Details: 'Details',
         },
       }
     },

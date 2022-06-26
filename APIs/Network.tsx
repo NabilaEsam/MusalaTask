@@ -17,10 +17,8 @@ export class Network {
       response.status !== 201 &&
       response.status !== 404
     ) {
-      console.log("response error: ", response);
       promise = Network.handleErrorsBasedOnStatus(response);
     } else {
-      console.log("response then: ", response);
       promise = response.json();
     }
 
@@ -41,7 +39,6 @@ export class Network {
     return headers;
   }
   static handleErrorsBasedOnStatus(response: any) {
-    console.log("response.status: ", response.status);
     let promise = response.json().then((data: any) => {
       return Promise.reject(data);
     });

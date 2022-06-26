@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
-// import { useTranslation } from "react-i18next";
+import { useCallback, useState } from "react";
 import { FlatList, Image, Pressable, StyleSheet } from "react-native";
 import { NewsService } from "../APIs/NewsService";
-import { Text, View } from "../components/Themed";
+import {View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import i18n from "i18next";
 import { useFocusEffect } from "@react-navigation/native";
@@ -13,12 +12,10 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   const getAllNews = () => {
-    console.log("i18n.language in news: ", i18n.language);
     let lang = i18n.language;
     setRefreshing(true);
     NewsService.getNews(lang)
       .then((res: any) => {
-        console.log("res.articles: ", res.totalResults);
         setNews(res.articles);
       })
       .catch((err) => {

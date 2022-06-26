@@ -59,13 +59,14 @@ function RootNavigator() {
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, headerTitleAlign: "center" }}
       />
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
         options={({ navigation }: RootStackScreenProps<"Details">) => ({
           title: I18n.t("News Detail"),
+          headerTitleAlign: "center",
         })}
       />
     </Stack.Navigator>
@@ -106,7 +107,7 @@ function BottomTabNavigator() {
             ? Colors.dark.tabIconSelected
             : Colors.light.tabIconSelected,
 
-        tabBarStyle: { paddingBottom: 10, height: 60 },
+        tabBarStyle: { paddingBottom: 10, height: 60},
         tabBarLabelStyle: {
           fontSize: 10,
           marginTop: -5,
@@ -119,6 +120,7 @@ function BottomTabNavigator() {
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
           title: I18n.t("Home"),
+          headerTitleAlign: "center",
           tabBarIcon: ({ focused }) => (
             <Entypo
               name="home"
@@ -133,6 +135,7 @@ function BottomTabNavigator() {
         component={SettingScreen}
         options={{
           title: `${I18n.t("Setting")}`,
+          headerTitleAlign: "center",
           tabBarIcon: ({ focused }) => (
             <Feather
               name="settings"
