@@ -21,7 +21,7 @@ export default function SettingScreen() {
     } else if (lang === "en") {
       await I18nManager.forceRTL(false);
     }
-    // Updates.reloadAsync();
+    Updates.reloadAsync();
   };
 
   const changeMode = (mode: any) => {
