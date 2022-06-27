@@ -59,7 +59,7 @@ function RootNavigator() {
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
-        options={{ headerShown: false, headerTitleAlign: "center" }}
+        options={{ headerShown: false, headerTitleAlign: "center",headerBackTitleVisible:false }}
       />
       <Stack.Screen
         name="Details"
@@ -67,6 +67,7 @@ function RootNavigator() {
         options={({ navigation }: RootStackScreenProps<"Details">) => ({
           title: I18n.t("News Detail"),
           headerTitleAlign: "center",
+          headerBackTitleVisible:false
         })}
       />
     </Stack.Navigator>

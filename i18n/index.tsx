@@ -5,6 +5,7 @@ import ar from "./ar.json";
 import * as Localization from "expo-localization";
 import { I18nManager } from "react-native";
 import moment from "moment";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let lang;
 const resources = {
@@ -21,8 +22,7 @@ i18n.use(initReactI18next).init({
   compatibilityJSON: "v3",
   interpolation: {
     format: function (value, format, lng) {
-      if (value instanceof Date)
-        return moment(value).format(format);
+      if (value instanceof Date) return moment(value).format(format);
       return value;
     },
   },
@@ -31,14 +31,22 @@ i18n.use(initReactI18next).init({
 
 const bootstrapAsync = async () => {
   let locale = Localization.locale;
-  if (locale.includes("ar")) {
-    lang = "ar";
-    await I18nManager.forceRTL(true);
+  let AppLang = await AsyncStorage.getItem("AppLang");
+  if (AppLang) {
+    lang = AppLang;
+    if (lang === "ar") {
+      await I18nManager.forceRTL(true);
+    } else {
+      await I18nManager.forceRTL(false);
+    }
   } else {
-    lang = "en";
-    await I18nManager.forceRTL(false);
+    if (locale.includes("ar")) {
+      lang = "ar";
+    } else {
+      lang = "en";
+      await I18nManager.forceRTL(false);
+    }
   }
-
   i18n.changeLanguage(lang);
 };
 
